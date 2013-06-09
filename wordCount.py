@@ -1,3 +1,7 @@
+# The object of this application is to take a string of words, 
+# count the instances of each word, 
+# and sort them according to the number of instances most to least
+
 inputListOfWords = 'hej, ost, med, dig, ost'
 listOfWords = []
 
