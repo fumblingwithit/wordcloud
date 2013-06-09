@@ -2,29 +2,25 @@
 # count the instances of each word, 
 # and sort them according to the number of instances most to least
 
-inputListOfWords = 'hej, ost, med, dig, ost'
-listOfWords = []
 
-wordList1 = ['ost', 0]
-wordList2 = ['hej', 0]
-wordList3 = ['ost', 0]
+####
+#### REBUILD ALL! Use Dictionary to keep track of things, i.e. [word]->[wordcount]
+####
+
+inputListOfWords = 'hej, ost, med, dig, ost'
+wordDictionary = {}
+
+def buildDictionary(wordList):
+	tmpDict = {}	
+	wordStringArray = wordList.split(',')
+	for item in wordStringArray:
+# FIX:		tmpDict.update({item,0})
+	return tmpDict
 
 def showInput(inputString):
 	print ('Input: ' + inputString)
 
-
-def buildListOfWords(wordList, newWordList):
-	wordList.append(newWordList)
-	return wordList
-
-def showWordList(wordList):
-	print(wordList)
-
 #--- RUNABLE ---#
 
-buildListOfWords(listOfWords, wordList1)
-buildListOfWords(listOfWords, wordList2)
-buildListOfWords(listOfWords, wordList3)
-
-showWordList(listOfWords)
-#showInput(inputListOfWords)
+showInput(inputListOfWords)
+wordDictionary = buildDictionary(inputListOfWords)
