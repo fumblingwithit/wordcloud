@@ -1,11 +1,8 @@
+from operator import itemgetter
 # The object of this application is to take a string of words, 
 # count the instances of each word, 
 # and sort them according to the number of instances most to least
 
-
-####
-#### REBUILD ALL! Use Dictionary to keep track of things, i.e. [word]->[wordcount]
-####
 
 inputListOfWords = 'hej,med,dig,ost,ost'
 wordDictionary = {}
@@ -19,14 +16,22 @@ def buildDictionary(wordList):
 			tmpDict[item] = newValue
 		else:
 			tmpDict.update({item:1})
-		print("Key: " + item)
-		print("Value: " + str(tmpDict[item]))
-#	return tmpDict
+	return tmpDict
+
+def sortDictionary(tmpDict):
+	return sorted(tmpDict.items(), key=itemgetter(1), reverse=True)
 
 def showInput(inputString):
 	print ('Input: ' + inputString)
 
+
 #--- RUNABLE ---#
 
 showInput(inputListOfWords)
-buildDictionary(inputListOfWords)
+wordDictionary = buildDictionary(inputListOfWords)
+#wordDictionary = sortDictionary(wordDictionary)
+print('Dictionary: %s' % wordDictionary)
+for key in sorted(wordDictionary, key=itemgetter(1), reverse=True):
+	print('Key: ' + str(key))
+	print('Value: ' + str(wordDictionary[key]))
+
