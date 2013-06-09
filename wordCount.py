@@ -7,15 +7,21 @@
 #### REBUILD ALL! Use Dictionary to keep track of things, i.e. [word]->[wordcount]
 ####
 
-inputListOfWords = 'hej, ost, med, dig, ost'
+inputListOfWords = 'hej,med,dig,ost,ost'
 wordDictionary = {}
 
 def buildDictionary(wordList):
 	tmpDict = {}	
 	wordStringArray = wordList.split(',')
 	for item in wordStringArray:
-# FIX:		tmpDict.update({item,0})
-	return tmpDict
+		if(tmpDict.has_key(item)):
+			newValue = tmpDict[item] + 1
+			tmpDict[item] = newValue
+		else:
+			tmpDict.update({item:1})
+		print("Key: " + item)
+		print("Value: " + str(tmpDict[item]))
+#	return tmpDict
 
 def showInput(inputString):
 	print ('Input: ' + inputString)
@@ -23,4 +29,4 @@ def showInput(inputString):
 #--- RUNABLE ---#
 
 showInput(inputListOfWords)
-wordDictionary = buildDictionary(inputListOfWords)
+buildDictionary(inputListOfWords)
