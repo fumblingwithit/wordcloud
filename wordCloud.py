@@ -10,6 +10,7 @@ inputListOfWords = (cgi.escape(inputListOfWords)).lower()
 
 wordDictionary = {}
 
+
 def buildDictionary(wordList):
         p = re.compile('[a-zA-Z0-9]+')
         tmpDict = {}
@@ -25,21 +26,18 @@ def buildDictionary(wordList):
 #--- RUNABLE ---#
 
 wordDictionary = buildDictionary(inputListOfWords)
-sortedDictionary = sorted(wordDictionary, key=itemgetter(1), reverse=True)
 
 print """\
 Content-Type: text/html\n
 <html><body>
 """
-print """\
-<p>Rough list: %s</p>
-""" %wordDictionary
+
 print """\
 <p>The submitted text gives this list of words:</p>
 """
 
-for key in sortedDictionary:
-        print('Key: ' + str(key) + '&nbsp;&gt;&nbsp; Value: ' + str(wordDictionary[key]) + '<br />\n')
+for key, value in sorted(wordDictionary.iteritems(), key=lambda (k,v): (v,k), reverse=True):
+    print "Key: %s &nbsp;&gt;&nbsp; Value: %s <br />\n" % (key, value)
 
 print """\
 </body></html>
