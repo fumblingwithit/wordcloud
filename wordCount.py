@@ -1,13 +1,14 @@
 from operator import itemgetter
+import re
 
-inputListOfWords = 'hej, med, dig, ost, ost gedeost endda'
+inputListOfWords = 'hej, med, dig, ost, ost gedeost endda.!/ argh'
 wordDictionary = {}
 
 def buildDictionary(wordList):
+	p = re.compile('[a-zA-Z0-9]+')
+	print 'RegeX: ' + str(p.findall(wordList))
 	tmpDict = {}	
-	wordList = wordList.replace(' ', ',')
-	wordList = wordList.replace(',,', ',')
-	wordStringArray = wordList.split(',')
+	wordStringArray = p.findall(wordList)
 	for item in wordStringArray:
 		if(tmpDict.has_key(item)):
 			newValue = tmpDict[item] + 1
