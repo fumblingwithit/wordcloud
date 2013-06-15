@@ -14,7 +14,6 @@ wordDictionary = {}
 
 def buildDictionary(wordList):
 	p = re.compile('[a-zA-Z0-9]+')
-#	print 'RegeX: ' + str(p.findall(wordList))
 	tmpDict = {}	
 	wordStringArray = p.findall(wordList)
 	for item in wordStringArray:
@@ -28,15 +27,22 @@ def buildDictionary(wordList):
 #--- RUNABLE ---#
 
 wordDictionary = buildDictionary(inputListOfWords)
-#print('Input list of words: ' + inputListOfWords)
-#print('Dictionary: %s' % wordDictionary)
 
 print """\
 Content-Type: text/html\n
 <html><body>
-<p>The submitted text gives this list of words:"</p>
 """
-for key in sorted(wordDictionary, key=itemgetter(1), reverse=True):
+
+print """\
+<p>Debugging: %s</p>
+""" %wordDictionary
+
+print """\
+<p>The submitted text gives this list of words:</p>
+"""
+
+sortedDictionary = sorted(wordDictionary, key=itemgetter(1), reverse=True)
+for key in sortedDictionary:
 	print('Key: ' + str(key) + '&nbsp;--&gt;&nbsp; Value: ' + str(wordDictionary[key]) + '<br />\n')
 
 print """\
