@@ -9,7 +9,7 @@ inputListOfWords = form.getfirst('wordCloudText', 'empty')
 inputListOfWords = (cgi.escape(inputListOfWords)).lower()
 
 wordDictionary = {}
-listOfWordsToIgnore = ['he', 'so', 'to', 'no', 'of', 'we', 'in', 'an', 'she', 'on', 'not', 'his', 'as', 'you', 'the', 'mr', 'me', 'if', 'be', 'or', 'him', 'and']
+listOfWordsToIgnore = ['he', 'so', 'to', 'no', 'of', 'we', 'in', 'an', 'she', 'on', 'not', 'his', 'as', 'you', 'the', 'mr', 'me', 'if', 'be', 'or', 'him', 'and', 'her', 'at', 'is']
 
 def buildDictionary(wordList, ignoreList):
         p = re.compile('[a-zA-Z0-9]+')
